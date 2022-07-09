@@ -1,10 +1,10 @@
 repeat task.wait() until game:IsLoaded() == true
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
-makefolder("Lowensky public  hub")
-    makefolder("Lowensky public hub/assets")
-makefolder("Lowensky public hub/configs")
-    makefolder("Lowensky public hub/mcsounds")
+makefolder("say-goodbye-exe")
+    makefolder("say-goodbye-exe/assets")
+makefolder("say-goodbye-exe/configs")
+    makefolder("say-goodbye-exe/mcsounds")
 
 local function playsound(id, volume) 
     local sound = Instance.new("Sound")
@@ -24,13 +24,13 @@ local function playclicksound()
 end
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title="Lowensky public hub";
-    Text="Lowensky public hub has been injected";
+    Title="say-goodbye-exe";
+    Text="say-goodbye-exe  has been injected";
     Duration=3;
 })
 
 
-local Window = Library.CreateLib("Lowensky public hub")
+local Window = Library.CreateLib("say-goodbye-exe")
 local Combat = Window:NewTab("Combat")
 local CombatSection = Combat:NewSection("Combat")
 local WorldSection = Combat:NewSection("World")
