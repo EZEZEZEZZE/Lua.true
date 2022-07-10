@@ -233,7 +233,7 @@ otherSection:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
 	Library:ToggleUI()
 end)
 
-CombatSection:NewSlider("Reach", "Reach", 18, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+CombatSection:NewSlider("Reach", "Reach", 18, 0, function()
     CombatConstant.RAYCAST_SWORD_CHARACTER_DISTANCE = reachvalue["Value"]
 end)
 
