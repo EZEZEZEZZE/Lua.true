@@ -1,4 +1,3 @@
-repeat task.wait() until game:IsLoaded() == true
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 makefolder("RektSky ReMake")
@@ -83,8 +82,7 @@ end)
 
 CombatSection:NewToggle("Reach", "test", function(state)
     if state then
-        if state then
-game:GetService("StarterGui"):SetCore("SendNotification",{
+     game:GetService("StarterGui"):SetCore("SendNotification",{
     Title="Reach";
     Text="Module: Reach has been enabled ";
     Duration=3;
@@ -390,4 +388,4 @@ if lplr.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
         end
       until not CapeP or CapeP.Parent ~= torso.Parent
     end
-end)
+end))
