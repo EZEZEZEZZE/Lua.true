@@ -2,9 +2,9 @@ repeat task.wait() until game:IsLoaded() == true
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 makefolder("say-goodbye-exe")
-    makefolder("say-goodbye-exe/assets")
-makefolder("say-goodbye-exe/configs")
-    makefolder("say-goodbye-exe/mcsounds")
+    makefolder("RektSky ReMake/assets")
+makefolder("RektSky ReMake/configs")
+    makefolder("RektSky ReMake/mcsounds")
 
 local function playsound(id, volume) 
     local sound = Instance.new("Sound")
@@ -24,19 +24,25 @@ local function playclicksound()
 end
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title="say-goodbye-exe";
-    Text="say-goodbye-exe  has been injected";
+    Title="RektSky ReMake";
+    Text="RektSky ReMake  has been injected";
     Duration=3;
 })
 
 
-local Window = Library.CreateLib("say-goodbye-exe")
+local Window = Library.CreateLib("RektSky ReMake")
 local Combat = Window:NewTab("Combat")
+local Blatant = Window:NewTab("Blatant")
+local Render = Window:NewTab("Render")
+local Utlity = Window:NewTab("Utlity")
+local World = Window:NewTab("World")
+local Credits = Window:NewTab("Credits")
 local CombatSection = Combat:NewSection("Combat")
-local WorldSection = Combat:NewSection("World")
-local RenderSection = Combat:NewSection("Render")
-local MovementSection = Combat:NewSection("Movement")
-local otherSection = Combat:NewSection("other")
+local BlatantSection = Blatant:NewSection("Blatant")
+local RenderSection = Render:NewSection("Render")
+local UtlitySection = Utlity:NewSection("Utlity")
+local WorldSection = World:NewSection("World")
+local CreditsSection = Credits:NewSection("Credits")
 CombatSection:NewToggle("killaura", "test", function(state)
     if state then
         local player = game:GetService("Players")
@@ -86,7 +92,7 @@ CombatSection:NewToggle("Reach", "test", function(state)
     end
 end)
 
-MovementSection:NewToggle("fly", "HypixelFly", function(v)
+BlatantSection:NewToggle("fly", "HypixelFly", function(v)
 longjumpval = v
         if longjumpval then
             workspace.Gravity = 0
@@ -111,126 +117,27 @@ longjumpval = v
     end
 end)
 
-MovementSection:NewToggle("WalkSpeed", "test", function(state)
+BlatantSection:NewToggle("WalkSpeed", "test", function(state)
     if state then
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 21
     else
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
     end
 end)
 
-MovementSection:NewToggle("gravity", "sets your gravity to 30", function(state)
+BlatantSection:NewToggle("gravity", "sets your gravity to 30", function(state)
     if state then
         workspace.Gravity = 30
     else
         workspace.Gravity = 196.19999694824
     end
 end)
-otherSection:NewLabel("kill aura made by xylex")
-otherSection:NewLabel("Reach made by skys on yt")
-otherSection:NewLabel("fly  made by xZyn#0002 /CO-Onwer")
-otherSection:NewLabel("Founner the Collector")
+CreditsSection:NewLabel("kill aura made by xylex")
+CreditsSection:NewLabel("Reach made by skys on yt")
+CreditsSection:NewLabel("fly  made by xZyn#0002 /CO-Onwer")
+CreditsSection:NewLabel("Founner the Collector")
 
-otherSection:NewTextBox("cmd bar", "1", function(cmd)
-	if cmd ==  "LN4343prison life remastered the Collector" then
-        repeat task.wait() until shared.GuiLibrary
-local GuiLibrary = shared.GuiLibrary
-local COB = function(tab, argstable) 
-    return GuiLibrary["ObjectsThatCanBeSaved"][tab.."Window"]["Api"].CreateOptionsButton(argstable)
-end
-
-
-COB("Utility", {
-    Name = "rektsky",
-    Function = function(callback) 
-        if callback then
-            pcall(function() 
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/8pmX8/rektsky4roblox/main/mainscript.lua"))()
-            end) 
-        end
-    end,
-    HoverText = "loads rektsky"
-})
-
-COB("Utility", {
-    Name = "future",
-    Function = function(callback) 
-        if callback then
-            pcall(function() 
-                loadstring(game:HttpGet('https://raw.githubusercontent.com/joeengo/Future/main/loadstring.lua', true))() 
-            end) 
-        end
-    end,
-    HoverText = "loads future"
-})
-
-COB("World", {
-    Name = "Night",
-    Function = function(v)
-        if v then
-            game.Lighting.TimeOfDay = "00:00:00"
-        else
-            game.Lighting.TimeOfDay = "13:00:00"
-        end
-    end
-})
-
-COB("World", {
-    Name = "Blood",
-    Function = function(v)
-        if v then
-            game.Lighting.Ambient = Color3.fromRGB(255,0,0)
-            game.Lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
-        else
-            game.Lighting.Ambient = Color3.fromRGB(91, 91, 91)
-            game.Lighting.OutdoorAmbient = Color3.fromRGB(201, 201, 201)
-        end
-    end
-})
-
-COB("World", {
-    Name = "Ocean",
-    Function = function(v)
-        if v then
-            game.Lighting.Ambient = Color3.fromRGB(0,0,255)
-            game.Lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
-        else
-            game.Lighting.Ambient = Color3.fromRGB(91, 91, 91)
-            game.Lighting.OutdoorAmbient = Color3.fromRGB(201, 201, 201)
-        end
-    end
-})
-
-COB("World", {
-    Name = "HypixelFly",
-    Function = function(v)
-        longjumpval = v
-        if longjumpval then
-            workspace.Gravity = 0
-            spawn(function()
-                repeat
-                    if (not longjumpval) then return end
-                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Freefall)
-                    wait(0.1)
-                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Running)
-                    wait(0.1)
-                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Climbing)
-                    wait(0.1)
-                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
-                    wait(0.1)
-                    lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
-                    wait(0.1)
-                until (not longjumpval)
-            end)
-        else
-            workspace.Gravity = 196.19999694824
-            return
-        end
-    end
-})
-end
-end)
-otherSection:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
+WorldSection:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
 	Library:ToggleUI()
 end)
 
@@ -262,7 +169,7 @@ WorldSection:NewToggle("AntiVoid", "can be in the void for 8 seconds", function(
     end
 end)
 
-RenderSection:NewButton("auto Report", "auto Reports", function(callback)
+UtlitySection:NewButton("auto Report", "auto Reports", function(callback)
     repeat wait() until game:IsLoaded()
 
 local ChatEvent = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents").SayMessageRequest
@@ -369,8 +276,20 @@ while task.wait() do
 end
 end)
 
-RenderSection:NewTextBox("Vape", "2", function(cmd)
-	if cmd ==  "Vape" then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
-end
+
+BlatantSection:NewToggle("NoFall", "ToggleInfo", function(v)
+        if v then
+            _G.fall = true
+            while _G.fall == true do
+                game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged.GroundHit:FireServer()
+                wait()
+            end
+        else
+            _G.fall = false
+        end
+    end)
+
+    Section:NewButton("ButtonText", "ButtonInfo", function(callback)
+    print("Clicked")
 end)
+    
