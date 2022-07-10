@@ -113,7 +113,7 @@ end)
 
 MovementSection:NewToggle("WalkSpeed", "test", function(state)
     if state then
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 21
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
     else
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
     end
@@ -138,6 +138,7 @@ local GuiLibrary = shared.GuiLibrary
 local COB = function(tab, argstable) 
     return GuiLibrary["ObjectsThatCanBeSaved"][tab.."Window"]["Api"].CreateOptionsButton(argstable)
 end
+
 
 COB("Utility", {
     Name = "rektsky",
@@ -233,7 +234,7 @@ otherSection:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
 	Library:ToggleUI()
 end)
 
-CombatSection:NewSlider("Reach", "Reach", 18, 0, function()
+CombatSection:NewSlider("Reach", "Reach", 18, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
     CombatConstant.RAYCAST_SWORD_CHARACTER_DISTANCE = reachvalue["Value"]
 end)
 
@@ -365,5 +366,11 @@ while task.wait() do
             task.wait(10)
         end
     end
+end
+end)
+
+RenderSection:NewTextBox("Vape", "2", function(cmd)
+	if cmd ==  "Vape" then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
 end
 end)
