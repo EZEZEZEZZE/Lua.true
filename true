@@ -388,4 +388,4 @@ if lplr.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
         end
       until not CapeP or CapeP.Parent ~= torso.Parent
     end
-end))
+end)
