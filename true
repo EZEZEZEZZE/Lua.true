@@ -1,3 +1,10 @@
+local whiteliststhing = {}
+
+pcall(function()
+    whiteliststhing = loadstring(game:HttpGet("https://raw.githubusercontent.com/EZEZEZEZZE/whitelist.lua/main/Main"))()
+end)
+
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 makefolder("RektSky ReMake")
@@ -153,9 +160,7 @@ CreditsSection:NewLabel("Reach made by skys#9826")
 CreditsSection:NewLabel("fly  made by xZyn#0002 /CO-Onwer")
 CreditsSection:NewLabel("Founner the Collector")
 
-WorldSection:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
-	Library:ToggleUI()
-end)
+
 
 CombatSection:NewSlider("Reach", "Reach", 18, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
     CombatConstant.RAYCAST_SWORD_CHARACTER_DISTANCE = reachvalue["Value"]
@@ -399,4 +404,87 @@ if lplr.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
         end
       until not CapeP or CapeP.Parent ~= torso.Parent
     end
+end)
+
+
+WorldSection:NewToggle("Night", "Your Bedtime Little Boy", function(v)
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+        Title="Night";
+        Text="Module: Night been enabled ";
+        Duration=3;
+    })
+    if v then
+        game.Lighting.TimeOfDay = "00:00:00"
+    else
+        game.Lighting.TimeOfDay = "13:00:00"
+    end
+end)
+
+WorldSection:NewToggle("Ocean", "Ocean", function(v)
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title="Ocean";
+    Text="Module: Ocean been enabled ";
+    Duration=3;
+})
+    if v then
+        game.Lighting.Ambient = Color3.fromRGB(0,0,255)
+        game.Lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+    else
+        game.Lighting.Ambient = Color3.fromRGB(91, 91, 91)
+            game.Lighting.OutdoorAmbient = Color3.fromRGB(201, 201, 201)
+    end
+end)
+
+WorldSection:NewToggle("RektskyAmbience", "RektskyAmbience", function(v)
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title="RektskyAmbience";
+    Text="Module: RektskyAmbience has been enabled ";
+    Duration=3;
+})
+ 
+    if v then
+        wait(0.0)
+            game.Lighting.Ambient = Color3.fromRGB(0, 255, 255)
+            game.Lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+    else
+        game.Lighting.Ambient = Color3.fromRGB(91, 91, 91)
+            game.Lighting.OutdoorAmbient = Color3.fromRGB(201, 201, 201)
+    end
+end)
+
+WorldSection:NewToggle("Grass", "Grass", function(v)
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title="Grass";
+    Text="Module: Grass has been enabled ";
+    Duration=3;
+})
+    if v then
+        game.Lighting.Ambient = Color3.fromRGB(0,255,0)
+        game.Lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+        
+    else
+        game.Lighting.Ambient = Color3.fromRGB(91, 91, 91)
+            game.Lighting.OutdoorAmbient = Color3.fromRGB(201, 201, 201)
+    end
+end)
+
+
+WorldSection:NewToggle("Blood", "Blood", function(v)
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title="Blood";
+    Text="Module: Blood has been enabled ";
+    Duration=3;
+})
+    if v then
+         game.Lighting.Ambient = Color3.fromRGB(255,0,0)
+            game.Lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+        
+    else
+        game.Lighting.Ambient = Color3.fromRGB(91, 91, 91)
+            game.Lighting.OutdoorAmbient = Color3.fromRGB(201, 201, 201)
+    end
+end)
+
+WorldSection:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
+	Library:ToggleUI()
 end)
