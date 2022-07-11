@@ -87,16 +87,16 @@ end)
 end)
 
 
-CombatSection:NewToggle("Reach", "test", function(state)
-    if state then
+CombatSection:NewToggle("Reach", "test", function(callback)
      game:GetService("StarterGui"):SetCore("SendNotification",{
     Title="Reach";
     Text="Module: Reach has been enabled ";
     Duration=3;
 })
-        CombatConstant.RAYCAST_SWORD_CHARACTER_DISTANCE = (reachval["Value"] - 14.4)
+       if callback then
+			bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = (reachval["Value"] - 0.0001)
     else
-        CombatConstant.RAYCAST_SWORD_CHARACTER_DISTANCE = 14.4
+        bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = 14.4
     end
 end)
 
@@ -156,16 +156,17 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
     end
 end)
 CreditsSection:NewLabel("kill aura made by mastadawn")
-CreditsSection:NewLabel("Reach made by skys#9826")
-CreditsSection:NewLabel("fly  made by xZyn#0002 /CO-Onwer")
-CreditsSection:NewLabel("Founner the Collector")
-CreditsSection:NewLabel("Founner the Collector")
+CreditsSection:NewLabel("Reach made by 7GrandDad")
+CreditsSection:NewLabel("fly made by xZyn#0002")
 CreditsSection:NewLabel("Founner the Collector")
 
 
 
-CombatSection:NewSlider("Reach", "Reach", 18, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
-    CombatConstant.RAYCAST_SWORD_CHARACTER_DISTANCE = reachvalue["Value"]
+
+CombatSection:NewSlider("Reach", "Reach", 18, 0, function(val) -- 500 (MaxValue) | 0 (MinValue)
+    if Reach["Enabled"] then
+			bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = (val - 0.0001)
+		end
 end)
 
 
@@ -490,3 +491,4 @@ end)
 WorldSection:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
 	Library:ToggleUI()
 end)
+
