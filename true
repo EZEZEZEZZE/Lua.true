@@ -122,7 +122,18 @@ longjumpval = v
         return
     end
 end)
-
+BlatantSection:NewToggle("WalkSpeed", "sets your WalkSpeed to 23", function(state)
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title="WalkSpeed";
+    Text="Module: WalkSpeed has been enabled ";
+    Duration=3;
+})
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
+    else
+      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end
+end)
 
 
 BlatantSection:NewToggle("gravity", "sets your gravity to 30", function(state)
