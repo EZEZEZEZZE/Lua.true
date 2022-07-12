@@ -452,6 +452,11 @@ CombatSection:NewSlider("Distance 1-40", "Increase killaura distance", 40, 1, fu
 	DistVal["Value"] = val
 end)
 
+CombatSection:NewSlider("Sound 1-0", "Adjust killaura sound", 1, 0, function(val)
+	killaurasoundval["Value"] = val
+end)
+
+
 CombatSection:NewToggle("No Swing", "Disable killaura swing", function(state)
     game:GetService("StarterGui"):SetCore("SendNotification",{
     Title="No Swing";
@@ -985,3 +990,26 @@ Tab6Section:NewButton("Zombie" , "Plays Zombie Animation",function()
 	Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=941000007"
 	game.Players.LocalPlayer.Character.Humanoid.Jump = true
 	end)
+
+	local shopthingyshopshop = debug.getupvalue(require(game:GetService("ReplicatedStorage").TS.games.bedwars.shop["bedwars-shop"]).BedwarsShop.getShopItem, 2)
+local oldnexttier
+local oldtiered
+local bypassstpidshoptiers = false
+RenderSection:NewToggle("ShopTierBypass", "bypassesShopTierBypass", function(v)
+		if (bypassstpidshoptiers) then
+            for i,v in pairs(shopthingyshopshop) do
+                oldtiered = oldtiered or v.tiered
+                oldnexttier = oldnexttier or v.nextTier
+            end
+            for i,v in pairs(shopthingyshopshop) do
+                v.tiered = nil
+                v.nextTier = nil
+            end
+    else
+        for i,v in pairs(shopthingyshopshop) do
+			v.tiered = oldtiered
+			v.nextTier = oldnexttier
+		end
+    end
+end)
+
