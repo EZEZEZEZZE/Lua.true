@@ -428,7 +428,7 @@ local WorldSection = World:NewSection("World")
 local Render = window:NewTab("Render")
 local RenderSection = Render:NewSection("Render")
 local Animation = window:NewTab("Animation")
-local AnimationSection = Animation:NewSection("Everyone Can See (Fe)")
+local AnimationSection = Animation:NewSection("ez")
 
 
 CombatSection:NewToggle("KillAura", "Autoswing the sword if someone is near you", function(state)
