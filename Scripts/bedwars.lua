@@ -1092,3 +1092,7 @@ WorldSection:NewToggle("Blood", "Blood", function(v)
             game.Lighting.OutdoorAmbient = Color3.fromRGB(201, 201, 201)
     end
 end)
+
+RenderSection:NewKeybind("Toggle UI", "Open/close", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)
