@@ -386,7 +386,7 @@ end
 
 
 local kavoUi = loadstring(game:HttpGet("https://raw.githubusercontent.com/EZEZEZEZZE/RektSky-Remake/main/Libraries/kavo.lua"))()
-local window = kavoUi.CreateLib("RektSky ReMakeV2", "Ocean")
+local window = kavoUi.CreateLib("RektSky ReMakeV4", "Ocean")
 local entity = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustDxrk/Vxpe-Entity/main/Vxpe%20Entity", true))()
 
 do
