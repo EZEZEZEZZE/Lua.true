@@ -70,20 +70,6 @@ local themeStyles = {
         TextColor = Color3.fromRGB(0,0,0),
         ElementColor = Color3.fromRGB(224, 224, 224)
     },
-  Luna = { 
-    SchemeColor = Color3.fromRGB(126, 6, 232), 
-    Background = Color3.fromRGB(0, 0, 0), 
-    Header = Color3.fromRGB(31, 31, 31), 
-    TextColor = Color3.fromRGB(255,255,255), 
-    ElementColor = Color3.fromRGB(31, 31, 31) 
-  },
-  Private = {
-    SchemeColor = Color3.fromRGB(255, 212,0), 
-    Background = Color3.fromRGB(0, 0, 0), 
-    Header = Color3.fromRGB(31, 31, 31), 
-    TextColor = Color3.fromRGB(255,255,255), 
-    ElementColor = Color3.fromRGB(20, 20,20) 
-  },
     BloodTheme = {
         SchemeColor = Color3.fromRGB(227, 27, 27),
         Background = Color3.fromRGB(10, 10, 10),
@@ -151,6 +137,34 @@ end
 Settings = game:service'HttpService':JSONEncode(readfile(Name))
 end)
 
+createnotification("Loaded", "Press F Toggle to toggle GUI", 3, true)
+
+    
+    coroutine.wrap(function()
+        while wait() do
+            Main.BackgroundColor3 = themeList.Background
+            MainHeader.BackgroundColor3 = themeList.Header
+            MainSide.BackgroundColor3 = themeList.Header
+            coverup_2.BackgroundColor3 = themeList.Header
+            coverup.BackgroundColor3 = themeList.Header
+        end
+    end)()
+
+    function Kavo:ChangeColor(prope,color)
+        if prope == "Background" then
+            themeList.Background = color
+        elseif prope == "SchemeColor" then
+            themeList.SchemeColor = color
+        elseif prope == "Header" then
+            themeList.Header = color
+        elseif prope == "TextColor" then
+            themeList.TextColor = color
+        elseif prope == "ElementColor" then
+            themeList.ElementColor = color
+        end
+    end
+    local Tabs = {}
+
 local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
 
 function Kavo:ToggleUI()
@@ -171,10 +185,6 @@ function Kavo.CreateLib(kavName, themeList)
         themeList = themeStyles.LightTheme
     elseif themeList == "BloodTheme" then
         themeList = themeStyles.BloodTheme
-    elseif themeList == "Luna" then
-        themeList = themeStyles.Luna
-    elseif themeList == "Private" then
-        themeList = themeStyles.Private
     elseif themeList == "GrapeTheme" then
         themeList = themeStyles.GrapeTheme
     elseif themeList == "Ocean" then
@@ -211,14 +221,6 @@ function Kavo.CreateLib(kavName, themeList)
         end
     end
     local ScreenGui = Instance.new("ScreenGui")
-    local optionframe
-local TabsFrame
-ScreenGui.Parent = game:WaitForChild("CoreGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-local ScreenGuitwo = Instance.new("ScreenGui")
-ScreenGuitwo.Parent = game:WaitForChild("CoreGui")
-ScreenGuitwo.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGuitwo.Name = "RektskyNotificationGui"
     local Main = Instance.new("Frame")
     local MainCorner = Instance.new("UICorner")
     local MainHeader = Instance.new("Frame")
@@ -366,114 +368,6 @@ ScreenGuitwo.Name = "RektskyNotificationGui"
     infoContainer.ClipsDescendants = true
     infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
     infoContainer.Size = UDim2.new(0, 368, 0, 33)
-    
-local foldername = "RektSky/config"
-local conf = {
-	["file"]=foldername.."/"..game.PlaceId..".json",
-	["functions"]={}
-}
-
-if game.PlaceId == 6872274481 or game.PlaceId == 8560631822 or game.PlaceId == 8444591321 then
-    conf["file"] = foldername.."/bedwars.json"
-end
-
-function conf.functions:MakeFile()
-	if isfile(conf["file"]) then return end
-	if not isfolder(foldername)  then
-		makefolder(foldername)
-	end
-	writefile(conf["file"],"{}")
-end
-
-function conf.functions:LoadConfigs()
-	if not isfile(conf["file"]) then
-		conf["functions"]:MakeFile()
-	end
-    wait(0.5)
-	return game:GetService("HttpService"):JSONDecode(readfile(conf["file"]))
-end
-
-function conf.functions:WriteConfigs(tab)
-	conf["functions"]:MakeFile()
-	writefile(conf["file"],game:GetService("HttpService"):JSONEncode((tab or {})))
-end
-
-local configtable = (conf["functions"]:LoadConfigs() or {})
-
-local configsaving = true
-
-spawn(function()
-    repeat
-        conf["functions"]:WriteConfigs(configtable)
-        task.wait(5)
-    until (not configsaving)
-end)
-if isfolder("RektSky/config") == false then
-    makefolder("RektSky/config")
-end
-
-function Kavo:TogglekavoUi()
-    if not ScreenGui.Enabled and game:GetService("UserInputService"):GetFocusedTextBox() == nil then
-        ScreenGui.Enabled = true
-    else
-        if game:GetService("UserInputService"):GetFocusedTextBox() == nil then
-            ScreenGui.Enabled = false
-        end
-    end
-end
-
-local Background
-local function createnotification(title, text, delay2, toggled)
-    spawn(function()
-        if ScreenGuitwo:FindFirstChild("Background") then ScreenGuitwo:FindFirstChild("Background"):Destroy() end
-        local frame = Instance.new("Frame")
-        frame.Size = UDim2.new(0, 100, 0, 115)
-        frame.Position = UDim2.new(0.5, 0, 0, -115)
-        frame.BorderSizePixel = 0
-        frame.AnchorPoint = Vector2.new(0.5, 0)
-        frame.BackgroundTransparency = 0.5
-        frame.BackgroundColor3 = Color3.new(0, 0, 0)
-        frame.Name = "Background"
-        frame.Parent = ScreenGuitwo
-        local frameborder = Instance.new("Frame")
-        frameborder.Size = UDim2.new(1, 0, 0, 8)
-        frameborder.BorderSizePixel = 0
-        frameborder.BackgroundColor3 = (toggled and Color3.fromRGB(102, 205, 67) or Color3.fromRGB(205, 64, 78))
-        frameborder.Parent = frame
-        local frametitle = Instance.new("TextLabel")
-        frametitle.Font = Enum.Font.SourceSansLight
-        frametitle.BackgroundTransparency = 1
-        frametitle.Position = UDim2.new(0, 0, 0, 30)
-        frametitle.TextColor3 = (toggled and Color3.fromRGB(102, 205, 67) or Color3.fromRGB(205, 64, 78))
-        frametitle.Size = UDim2.new(1, 0, 0, 28)
-        frametitle.Text = "          "..title
-        frametitle.TextSize = 24
-        frametitle.TextXAlignment = Enum.TextXAlignment.Left
-        frametitle.TextYAlignment = Enum.TextYAlignment.Top
-        frametitle.Parent = frame
-        local frametext = Instance.new("TextLabel")
-        frametext.Font = Enum.Font.SourceSansLight
-        frametext.BackgroundTransparency = 1
-        frametext.Position = UDim2.new(0, 0, 0, 68)
-        frametext.TextColor3 = Color3.new(1, 1, 1)
-        frametext.Size = UDim2.new(1, 0, 0, 28)
-        frametext.Text = "          "..text
-        frametext.TextSize = 24
-        frametext.TextXAlignment = Enum.TextXAlignment.Left
-        frametext.TextYAlignment = Enum.TextYAlignment.Top
-        frametext.Parent = frame
-        local textsize = game:GetService("TextService"):GetTextSize(frametitle.Text, frametitle.TextSize, frametitle.Font, Vector2.new(100000, 100000))
-        local textsize2 = game:GetService("TextService"):GetTextSize(frametext.Text, frametext.TextSize, frametext.Font, Vector2.new(100000, 100000))
-        if textsize2.X > textsize.X then textsize = textsize2 end
-        frame.Size = UDim2.new(0, textsize.X + 38, 0, 115)
-        pcall(function()
-            frame:TweenPosition(UDim2.new(0.5, 0, 0, 20), Enum.EasingDirection.InOut, Enum.EasingStyle.Quad, 0.15)
-            game:GetService("Debris"):AddItem(frame, delay2 + 0.15)
-        end)
-    end)
-end
-
-createnotification("Loaded", "Press F Toggle to toggle GUI", 3, true)
 
     
     coroutine.wrap(function()
@@ -2774,7 +2668,6 @@ createnotification("Loaded", "Press F Toggle to toggle GUI", 3, true)
         end
         return Sections
     end  
-    
     return Tabs
-    end
+end
 return Kavo
