@@ -1,1 +1,1 @@
-game:GetService("Players").LocalPlayer:Kick("This script IS being worked on Sorry try leter")
+game:GetService("Players").LocalPlayer:Kick("This script is being worked on Sorry try leter")
