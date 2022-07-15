@@ -2091,7 +2091,7 @@ TextLabel.BorderSizePixel = 0
 TextLabel.Position = UDim2.new(-0.000772226602, 0, 0.0343558267, 0)
 TextLabel.Size = UDim2.new(0.170134634, 0, 0.0700389072, 0)
 TextLabel.Font = Enum.Font.GothamBold
-TextLabel.Text = "RektSky"
+TextLabel.Text = "𝐍𝐢𝐠𝐡𝐭𝐗"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextScaled = true
 TextLabel.TextSize = 28.000
@@ -2459,7 +2459,7 @@ end
 
 
 local kavoUi = loadstring(game:HttpGet("https://raw.githubusercontent.com/EZEZEZEZZE/RektSky-Remake/main/Libraries/kavo.lua"))()
-local window = kavoUi.CreateLib("RektSky ReMakeV4", "Ocean")
+local window = kavoUi.CreateLib("𝐍𝐢𝐠𝐡𝐭𝐗V4", "BloodTheme")
 local entity = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustDxrk/Vxpe-Entity/main/Vxpe%20Entity", true))()
 
 do
